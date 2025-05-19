@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install nginx on managed nodes
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: copy files with owner and permission
+      ansible.builtin.copy:
+        src: files/index.html
+        dest: /usr/local/share/nginx/html/
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: restart nginx for reloading changes
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded

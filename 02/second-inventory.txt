@@ -1,0 +1,6 @@
+target1 ansible_host=192.168.123.6 ansible_ssh_pass=1234
+target2 ansible_host=192.168.123.7 ansible_ssh_pass=1234
+
+[all:vars]
+app_list=['tree','git','apt-transport-https','ca-certificates','curl','gnupg-agent','software-properties-common','lsb-release']
+

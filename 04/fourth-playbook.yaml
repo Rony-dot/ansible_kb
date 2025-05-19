@@ -1,0 +1,23 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: create user simone into the managed nodes
+      tags: always
+      user: 
+        name: simone
+        groups: root
+
+    - name: add ssh key for simone on the managed nodes
+      tags: always
+      authorized_key:
+        user: simone
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE4UqkUsNdP8+n83JgkWdvVQBY90BCre9IWJlp99jO47 rakibulh@ubuntu-controller" 
+ 
+    - name: add sudoers file for simone
+      tags: always
+      copy: 
+        src: sudoers_simone
+        dest: /etc/sudoers.d/simone
+        owner: root
+        group: root
