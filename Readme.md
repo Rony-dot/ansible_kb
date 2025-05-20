@@ -1,0 +1,17 @@
+- [x] inventory
+- [x] playbook
+- [x] config file (ansible.cfg)
+- [x] tasks 
+	- [x] builtin modules
+	- [x] community modules (docker, service)
+	- [x] register (track state)
+	- [x] handler (reusable tasks)
+- [x] roles
+	- [x] tasks
+	- [x] files
+	- [x] templates
+- [x] project
+	- [x] automate ssh user creation in managed nodes
+	- [x] automate ssh pub key copy in managed nodes
+	- [x] deploy a dockerized app whose codebase is hosted in github
+	- [x] automate process for install and configuring nginx to serve a basic index.html page
