@@ -1,3 +1,2 @@
-localhost ansible_connection=local nameserver_ip=8.8.8.8 snmp_port=160-161
 target1 ansible_host=192.168.123.6 ansible_ssh_pass=1234
 target2 ansible_host=192.168.123.7 ansible_ssh_pass=1234

@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: true
+  gather_facts: false
   tasks:
     - name: Install nginx on managed nodes
       ansible.builtin.apt:
@@ -11,12 +12,20 @@
     - name: copy files with owner and permission
       ansible.builtin.copy:
         src: files/index.html
-        dest: /usr/local/share/nginx/html/
+        dest: /var/www/html/
         owner: root
         group: root
         mode: '0644'
+      register: is_copied
 
     - name: restart nginx for reloading changes
       ansible.builtin.service:
         name: nginx
         state: reloaded
+      when: is_copied.changed
+
+    - name: allow port 80 to access nginx home page
+      community.general.ufw:
+        state: enabled
+        rule: allow
+        port: '80'

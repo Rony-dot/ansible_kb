@@ -13,7 +13,7 @@
 - name: add sudoers file for simone
   tags: always
   copy:
-    src: sudoers_simone
+    src: files/sudoers_simone
     dest: /etc/sudoers.d/simone
     owner: root
     group: root
